@@ -13,6 +13,7 @@ const PostSchema = mongoose.Schema(
     published: {
       type: Boolean,
       required: [true, 'Please mark if this post should be published'],
+      default: false,
     },
     comments: [String],
   },
