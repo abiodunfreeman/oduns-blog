@@ -23,13 +23,13 @@ const Form = () => {
         body: JSON.stringify(formData),
       });
       console.log(add);
+      document.getElementById('new-post-form').reset();
     } catch (err) {
       console.error();
     }
   };
   const handleFormChange = e => {
     const target = e.target.name;
-    console.log(formData);
 
     setFormData(oldFormData => {
       return {
@@ -48,7 +48,12 @@ const Form = () => {
       <h1>{formData.title}</h1>
       <h1>{formData.message}</h1>
       <h1>{formData.published}</h1>
-      <form action="/posts/create/" method="post" onSubmit={handleFormSubmit}>
+      <form
+        action="/posts/create/"
+        method="post"
+        onSubmit={handleFormSubmit}
+        id="new-post-form"
+      >
         <label for="post-form-title">Title:</label>
         <input
           type="text"

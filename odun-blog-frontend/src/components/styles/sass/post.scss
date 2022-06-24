@@ -1,0 +1,11 @@
+#posts-container {
+  border: 3px solid blue;
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  li {
+    min-width: 200px;
+    border: 2px solid red;
+  }
+}

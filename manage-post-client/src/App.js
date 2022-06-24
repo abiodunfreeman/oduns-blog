@@ -1,5 +1,6 @@
 import './App.css';
 import Form from './components/Form';
+import Post from './components/Post';
 /*
     form(action="" method="post")
         label(for="post-form-title") Title:  
@@ -15,6 +16,7 @@ function App() {
   return (
     <div className="App">
       <Form />
+      <Post />
     </div>
   );
 }

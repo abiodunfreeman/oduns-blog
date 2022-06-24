@@ -3,7 +3,7 @@ import './styles/css/post.css';
 const Posts = () => {
   const [posts, setPosts] = useState([]);
 
-  //fetch posts from server
+  //fetch posts from server on page load
   useEffect(() => {
     fetch('/posts/')
       .then(res => {
@@ -17,22 +17,21 @@ const Posts = () => {
   useEffect(() => {
     console.log(posts);
   }, [posts]);
-  return (
-    <ul id="posts-container">
-      {posts.map(post => (
+
+  function handleDeletePost(id) {
+    console.log(id);
+  }
+  const publishedPost = posts
+    .filter(post => post.published === true)
+    .map(post => {
+      return (
         <li key={post._id}>
           <h1>{post.title}</h1>
           <p>{post.message}</p>
-          {post.published ? (
-            <button type="button" disabled>
-              publish
-            </button>
-          ) : (
-            <button type="button">publish</button>
-          )}
+          <button onClick={() => handleDeletePost(post._id)}>delete</button>
         </li>
-      ))}
-    </ul>
-  );
+      );
+    });
+  return <ul id="posts-container">{publishedPost}</ul>;
 };
 export default Posts;
