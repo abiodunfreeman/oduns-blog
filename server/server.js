@@ -5,6 +5,7 @@ const path = require('path');
 const User = require('./models/User');
 const bodyParser = require('body-parser');
 const connectDB = require('./config/db');
+const cors = require('cors');
 const app = express();
 
 // Load env vars
@@ -17,6 +18,7 @@ app.set('view engine', 'pug');
 // Body Parser
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cors());
 // CORS Allowed
 app.use(function (req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');

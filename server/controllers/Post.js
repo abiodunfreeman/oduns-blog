@@ -29,8 +29,8 @@ exports.viewSinglePost = async (req, res, next) => {
 // @access Public
 exports.deletePost = async (req, res, next) => {
   try {
-    const deletePost = await Post.findByIdAndDelete(req.params.id);
-    res.status(200).json({ success: true, deletePost });
+    const deletedPost = await Post.findByIdAndDelete(req.params.id);
+    res.status(200).json({ success: true, deletedPost });
   } catch (err) {
     console.log(`${err}`.red);
     res.status(400).json({ success: false, err: err.message });

@@ -11,7 +11,7 @@ const {
 
 router.route('/').get(getPostJSON);
 router.route('/:id').get(viewSinglePost);
-router.route('/:id/delete').delete(deletePost);
+router.route('/:id/delete').delete(deletePost).get(deletePost);
 router.route('/create').get(getPostForm).post(createPost);
 
 module.exports = router;
