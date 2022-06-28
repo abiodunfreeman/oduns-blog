@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+
 import './styles/css/post.css';
 const Posts = () => {
   const [postJSX, setPostJSX] = useState([]);
@@ -43,6 +44,7 @@ const Posts = () => {
     console.log(postJSX);
     setCurrPost(postJSX[0]);
   }, [postJSX]);
+
   const handlePostClick = id => {
     console.log('slkfjsl;k');
     const selectedPost = posts

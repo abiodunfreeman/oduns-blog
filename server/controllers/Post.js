@@ -24,6 +24,18 @@ exports.viewSinglePost = async (req, res, next) => {
     res.status(400).json({ success: false, err: err.message });
   }
 };
+// @desc Displays Post Form
+// @route Delete /posts/:id/delete
+// @access Public
+exports.deletePost = async (req, res, next) => {
+  try {
+    const deletePost = await Post.findByIdAndDelete(req.params.id);
+    res.status(200).json({ success: true, deletePost });
+  } catch (err) {
+    console.log(`${err}`.red);
+    res.status(400).json({ success: false, err: err.message });
+  }
+};
 // @desc Create a new post
 // @route POST /posts/create
 // @access Public

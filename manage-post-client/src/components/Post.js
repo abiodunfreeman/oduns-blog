@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './styles/css/post.css';
+import axios from 'axios';
 const Posts = () => {
-  const [postJSX, setPostJSX] = useState([]);
   const [posts, setPosts] = useState([]);
   const [currPost, setCurrPost] = useState();
   //fetch posts from server
@@ -39,10 +39,14 @@ const Posts = () => {
     //   });
     // });
   }, [posts]);
-  useEffect(() => {
-    console.log(postJSX);
-    setCurrPost(postJSX[0]);
-  }, [postJSX]);
+
+  const handleDeletePost = async id => {
+    console.log('delete post ran');
+    const res = await axios.delete(
+      `http://localhost:5000/posts/62b136482afb4c7e8f894236/delete`
+    );
+    console.log(res);
+  };
   const handlePostClick = id => {
     console.log('slkfjsl;k');
     const selectedPost = posts
@@ -51,11 +55,15 @@ const Posts = () => {
         <div key={post._id}>
           <h1>{post.title}</h1>
           <h2>{post.message}</h2>
+          <button onClick={() => handleDeletePost(post._id)}>
+            delete post
+          </button>
         </div>
       ))[0];
     console.log(selectedPost);
     setCurrPost(selectedPost);
   };
+
   return (
     <div id="post-container">
       {/* <ul id="posts-container">
