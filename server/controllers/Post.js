@@ -12,6 +12,18 @@ exports.getPostJSON = async (req, res, next) => {
     res.status(400).json({ success: false, err: err.message });
   }
 };
+// @desc Displays Post Form
+// @route GET /posts/create
+// @access Public
+exports.viewSinglePost = async (req, res, next) => {
+  try {
+    const singlePost = await Post.findById(req.params.id);
+    res.status(200).json(singlePost);
+  } catch (err) {
+    console.log(`${err}`.red);
+    res.status(400).json({ success: false, err: err.message });
+  }
+};
 // @desc Create a new post
 // @route POST /posts/create
 // @access Public

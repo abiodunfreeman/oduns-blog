@@ -1,13 +1,15 @@
-#posts-container {
+#post-container {
   border: 3px solid blue;
   list-style-type: none;
   display: flex;
   flex-wrap: wrap;
   gap: 5px;
 }
-#posts-container li {
+#post-container nav {
   min-width: 200px;
   border: 2px solid red;
+  overflow-y: scroll;
+  max-height: 500px;
 }
 
 /*# sourceMappingURL=post.css.map */
