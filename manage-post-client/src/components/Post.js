@@ -35,7 +35,9 @@ const Posts = () => {
         <div key={post._id}>
           <h1>{post.title}</h1>
           <h2>{post.message}</h2>
-          <h3>{post.published ? 'yup' : 'no'}</h3>
+          <h3 style={{ color: 'purple' }}>
+            {post.published ? 'published' : 'not published'}
+          </h3>
           <button onClick={() => handleDeletePost(post._id)}>
             delete post
           </button>
@@ -54,15 +56,30 @@ const Posts = () => {
             padding: '1rem',
           }}
         >
-          {posts.map(post => (
-            <button
-              style={{ display: 'block', margin: '1rem 0' }}
-              onClick={() => handlePostClick(post._id)}
-              key={post._id}
-            >
-              {post.title}
-            </button>
-          ))}
+          <h1>published</h1>
+          {posts
+            .filter(post => post.published === true)
+            .map(post => (
+              <button
+                style={{ display: 'block', margin: '1rem 0' }}
+                onClick={() => handlePostClick(post._id)}
+                key={post._id}
+              >
+                {post.title}
+              </button>
+            ))}
+          <h1>not published</h1>
+          {posts
+            .filter(post => post.published === false)
+            .map(post => (
+              <button
+                style={{ display: 'block', margin: '1rem 0' }}
+                onClick={() => handlePostClick(post._id)}
+                key={post._id}
+              >
+                {post.title}
+              </button>
+            ))}
         </nav>
       </div>
       <div id="current-post">{currPost}</div>
